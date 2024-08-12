@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiren Bhimani - Professional Profile</title>
+    <style>
+        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('https://www.toptal.com/designers/subtlepatterns/patterns/geometry.png');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            animation: bg-animation 15s ease infinite;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            animation: fade-in 1s ease-in-out;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        header h1 {
+    margin: 0;
+    font-size: 4rem; /* Responsive font size */
+    color: #3498db; /* Bright blue color for emphasis */
+    letter-spacing: 4px;
+    animation: text-glow 1.5s ease-in-out infinite alternate, text-shadow-animation 3s ease-in-out infinite;
+    text-transform: uppercase;
+    font-weight: 700; /* Slightly heavier weight for better visibility */
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.8), 0 0 20px rgba(52, 152, 219, 0.6), 0 0 30px rgba(52, 152, 219, 0.4);
+}
+
+
+
+        .summary {
+            font-style: italic;
+            color: #555;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 20px auto;
+            animation: slide-in-left 1.5s ease-in-out;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            color: #3498db;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            animation: zoom-in 1s ease-in-out;
+        }
+
+        .education-item h3, .project-details h3 {
+            color: #2c3e50;
+            margin: 5px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .education-item p, .project-details p, .personal-details p {
+            margin: 2px 0;
+            color: #34495e;
+        }
+
+        .skills ul, .project-details ul, .hobbies ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .skills li, .project-details li, .hobbies li {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: #e3f2fd;
+            border-radius: 6px;
+            animation: fade-in-up 1s ease-in-out;
+            transition: background-color 0.3s;
+        }
+
+        .skills li:hover, .project-details li:hover, .hobbies li:hover {
+            background-color: #bbdefb;
+        }
+
+        .personal-details p {
+            font-size: 18px;
+            padding: 5px 0;
+            border-bottom: 1px solid #e0e0e0;
+            animation: fade-in-up 1.2s ease-in-out;
+        }
+
+        footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 3px solid #e74c3c;
+            margin-top: 20px;
+            animation: fade-in 2s ease-in-out;
+        }
+
+        footer p {
+            color: #e74c3c;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes bg-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide-in-left {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoom-in {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+       @keyframes text-glow {
+    from {
+        color: #3498db; /* Base color */
+    }
+    to {
+        color: #2980b9; /* Slightly darker blue */
+    }
+}
+
+@keyframes text-shadow-animation {
+    0% {
+        text-shadow: 0 0 10px rgba(52, 152, 219, 0.8), 0 0 20px rgba(52, 152, 219, 0.6), 0 0 30px rgba(52, 152, 219, 0.4);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(52, 152, 219, 1), 0 0 30px rgba(52, 152, 219, 0.8), 0 0 40px rgba(52, 152, 219, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(52, 152, 219, 0.8), 0 0 20px rgba(52, 152, 219, 0.6), 0 0 30px rgba(52, 152, 219, 0.4);
+    }
+}
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 36px;
+            }
+
+            .section h2 {
+                font-size: 28px;
+            }
+
+            .education-item h3, .project-details h3 {
+                font-size: 20px;
+            }
+
+            .summary {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Hiren Bhimani</h1>
+            <p class="summary">Dedicated IT Fresher with a strong desire to make an impact in the field. Seeking an opportunity to learn from industry experts, gain practical experience in software development, and contribute innovative ideas to drive organizational success.</p>
+        </header>
+        <section class="section education">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelors of Computer Applications (BCA)</h3>
+                <p><strong>Institution:</strong> St. Stephen Institute of Business Management & Technology</p>
+                <p><strong>University:</strong> Sardar Patel University</p>
+                <p><strong>Graduation:</strong> April 2024</p>
+                <p><strong>GPA:</strong> 8.08</p>
+            </div>
+            <div class="education-item">
+                <h3>Higher Secondary Schooling (H.S.C)</h3>
+                <p><strong>Board:</strong> Gujarat State Board</p>
+                <p><strong>Year:</strong> May 2021</p>
+                <p><strong>Percentage:</strong> 60.71%</p>
+            </div>
+            <div class="education-item">
+                <h3>Secondary Schooling (S.S.C)</h3>
+                <p><strong>Board:</strong> Gujarat State Board</p>
+                <p><strong>Year:</strong> March 2019</p>
+                <p><strong>Percentage:</strong> 59.17%</p>
+            </div>
+        </section>
+        <section class="section skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Basic Knowledge of React</li>
+                <li>HTML, CSS, Bootstrap, JavaScript</li>
+                <li>Database Management, SQL, C#</li>
+                <li>MS Word, Excel, PowerPoint</li>
+            </ul>
+        </section>
+        <section class="section project-details">
+            <h2>Project Details</h2>
+            <h3>Game Accessories Store Website (An E-commerce Website)</h3>
+            <p>The website includes the following features:</p>
+            <ul>
+                <li><strong>User Part:</strong> Users can view all services, order products, and update their information.</li>
+                <li><strong>Admin Part:</strong> Admins can add, delete, update products, manage orders, and change passwords.</li>
+            </ul>
+        </section>
+        <section class="section hobbies">
+            <h2>Hobbies</h2>
+            <ul>
+                <li>Listening to Music</li>
+                <li>Learning New Things</li>
+                <li>Net Surfing</li>
+                <li>Designing Ads Templates & Videos</li>
+                <li>Social Media Management</li>
+            </ul>
+        </section>
+        <section class ="section personal-details">
+<h2>Personal Details</h2>
+<p><strong>Full Name:</strong> Hiren Bhimani</p>
+<p><strong>Nationality:</strong> Indian</p>
+<p><strong>Gender:</strong> Male</p>
+<p><strong>Email:</strong> hirenbhimani1213@gmail.com</p>
+<p><strong>Marital Status:</strong> Unmarried</p>
+<p><strong>Date of Birth:</strong> 21st Jan 2003</p>
+<p><strong>Address:</strong> Vadodara - 390008, Gujarat</p>
+</section>
+<footer>
+<p>© 2024 Hiren Bhimani</p>
+</footer>
+</div>
+
+</body>
+</html>
