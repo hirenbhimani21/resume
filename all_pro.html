@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9; /* Light gray background */
+            margin: 0;
+            padding: 0;
+            color: #333; /* Default text color */
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #0056b3; /* Deep blue background */
+            color: #ffffff; /* White text for contrast */
+        }
+        .logo {
+            width: 150px;
+            transition: transform 0.3s;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .logo:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+            color: #ffffff; /* White heading for contrast */
+        }
+        .resume-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 16px;
+            text-decoration: none; /* Removes underline */
+            color: #ffe600; /* Bright yellow for the link */
+            transition: color 0.3s;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .resume-link:hover {
+            color: #ffd700; /* Darker yellow on hover */
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+        .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .project {
+            background: #ffffff; /* White background for projects */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 20px;
+            flex: 1 1 calc(30% - 40px);
+            box-sizing: border-box;
+            transition: transform 0.2s, box-shadow 0.3s;
+            cursor: pointer; /* Change cursor to pointer */
+        }
+        .project:hover {
+            transform: scale(1.05); /* Scale effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+            background-color: #f0f8ff; /* Light blue background on hover */
+        }
+        .project img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .project img:hover {
+            transform: scale(1.1); /* Scale image on hover */
+        }
+        .project h2 {
+            margin: 10px 0;
+            color: #007bff; /* Bright blue for project titles */
+            transition: color 0.3s;
+        }
+        .project h2:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+        .project p {
+            color: #555; /* Dark gray for project descriptions */
+        }
+        @media (max-width: 768px) {
+            .project {
+                flex: 1 1 calc(45% - 40px);
+            }
+        }
+        @media (max-width: 480px) {
+            .project {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#">
+        <img src="logo hb.jpg" alt="Logo" class="logo">
+    </a>
+    <h1>Project List</h1>
+    <a href="index.html" class="resume-link" target="_blank">View My Resume</a>
+</header>
+
+<div class="container">
+    <div class="project-list">
+        <div class="project" onclick="window.open('pic_searcher_by_hiren.html', '_blank')">
+            <img src="create_image.jpg" alt="Create Image of Your Sign">
+            <h2>Create Image of Your Sign</h2>
+            <p>This project allows you to create a custom image with your personalized text. Choose your font, size, and colors! And download the image.</p>
+        </div>
+        <div class="project" onclick="window.open('pic_searcher_by_hiren.html', '_blank')">
+            <img src="create_image.jpg" alt="Pic Searcher">
+            <h2>Pic Searcher</h2>
+            <p>This project helps you find images based on specific keywords. Explore different categories!</p>
+        </div>
+        <div class="project" onclick="window.open('another_project.html', '_blank')">
+            <img src="create_image.jpg" alt="Another Project">
+            <h2>Another Project</h2>
+            <p>A brief description of another interesting project you worked on.</p>
+        </div>
+        <!-- Add more project divs as needed -->
+    </div>
+</div>
+
+<script>
+    // Example of a mouse event
+    document.querySelectorAll('.project').forEach(project => {
+        project.addEventListener('mouseenter', () => {
+            project.style.transform = 'scale(1.05)'; // Scale up on mouse enter
+        });
+        project.addEventListener('mouseleave', () => {
+            project.style.transform = 'scale(1)'; // Reset scale on mouse leave
+        });
+    });
+</script>
+
+</body>
+</html> -
+
+
+
+
+

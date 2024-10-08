@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Image of Your Sign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&family=Open+Sans&family=Montserrat&family=Raleway&family=Oswald&family=Pacifico&family=Quicksand&family=Sacramento&family=Source+Sans+Pro&family=Amatic+SC&family=Courgette&family=Dancing+Script&family=Fredericka+the+Great&family=Grand+Hotel&family=Indie+Flower&family=Just+Another+Hand&family=Lora&family=Metal+Mania&family=Merriweather&family=Permanent+Marker&family=Playfair+Display&family=Poiret+One&family=Raleway+Dots&family=Redressed&family=Rock+Salt&family=Shadows+Into+Light&family=Special+Elite&family=Unica+77&family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9; /* Light gray */
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            text-align: center;
+            background: #e7f3ff; /* Soft blue */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 90%;
+            width: 600px;
+        }
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+        }
+        .logo-img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            transition: transform 0.3s, filter 0.3s;
+        }
+        .logo-img:hover {
+            transform: rotate(5deg) scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        input[type="color"] {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .result {
+            margin-top: 20px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        h1 {
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+            text-align: left;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="all_pro.html" target="_blank">
+            <img src="logo hb.jpg" alt="HB" class="logo-img">
+        </a>
+        <h1>Create Image of Your Sign</h1>
+        <input type="text" id="keywords" placeholder="Enter your sign" required>
+        
+        <select id="fontSelect">
+            <option value="'Roboto', sans-serif">Roboto</option>
+            <option value="'Lobster', cursive">Lobster</option>
+            <option value="'Open Sans', sans-serif">Open Sans</option>
+            <option value="'Montserrat', sans-serif">Montserrat</option>
+            <option value="'Raleway', sans-serif">Raleway</option>
+            <option value="'Oswald', sans-serif">Oswald</option>
+            <option value="'Pacifico', cursive">Pacifico</option>
+            <option value="'Quicksand', sans-serif">Quicksand</option>
+            <option value="'Sacramento', cursive">Sacramento</option>
+            <option value="'Source Sans Pro', sans-serif">Source Sans Pro</option>
+            <option value="'Amatic SC', cursive">Amatic SC</option>
+            <option value="'Courgette', cursive">Courgette</option>
+            <option value="'Dancing Script', cursive">Dancing Script</option>
+            <option value="'Fredericka the Great', cursive">Fredericka the Great</option>
+            <option value="'Grand Hotel', cursive">Grand Hotel</option>
+            <option value="'Indie Flower', cursive">Indie Flower</option>
+            <option value="'Just Another Hand', cursive">Just Another Hand</option>
+            <option value="'Lora', serif">Lora</option>
+            <option value="'Metal Mania', cursive">Metal Mania</option>
+            <option value="'Merriweather', serif">Merriweather</option>
+            <option value="'Permanent Marker', cursive">Permanent Marker</option>
+            <option value="'Playfair Display', serif">Playfair Display</option>
+            <option value="'Poiret One', sans-serif">Poiret One</option>
+            <option value="'Raleway Dots', cursive">Raleway Dots</option>
+            <option value="'Redressed', cursive">Redressed</option>
+            <option value="'Rock Salt', cursive">Rock Salt</option>
+            <option value="'Shadows Into Light', cursive">Shadows Into Light</option>
+            <option value="'Special Elite', serif">Special Elite</option>
+            <option value="'Unica 77', sans-serif">Unica 77</option>
+            <option value="'Varela Round', sans-serif">Varela Round</option>
+        </select>
+
+        <input type="number" id="fontSize" placeholder="Font size (px)" value="50" min="10" max="100">
+
+        <label for="bgColor">Choose Background Color:</label>
+        <input type="color" id="bgColor" value="#ffffff" title="Select Background Color">
+        
+        <label for="textColor">Choose Text Color:</label>
+        <input type="color" id="textColor" value="#0000ff" title="Select Text Color">
+
+        <button id="createImage">Create Image</button>
+        <button id="downloadImage" style="display: none;">Download Image</button>
+        <div id="result" class="result"></div>
+        
+        <p style="font-size: 12px; color: #666; margin-top: 20px;">Created by Hiren Bhimani</p>
+    </div>
+
+    <script>
+        let currentImage;
+
+        document.getElementById('createImage').addEventListener('click', function() {
+            const input = document.getElementById('keywords').value.trim();
+            if (input === '') {
+                alert('Please enter your sign before creating the image.');
+                return; // Exit the function early
+            }
+
+            const keywords = input.split(',').map(keyword => keyword.trim()).filter(Boolean);
+            const selectedFont = document.getElementById('fontSelect').value;
+            const fontSize = document.getElementById('fontSize').value + 'px';
+            const bgColor = document.getElementById('bgColor').value;
+            const textColor = document.getElementById('textColor').value;
+            createImage(keywords, selectedFont, fontSize, bgColor, textColor);
+        });
+
+        function createImage(keywords, font, fontSize, bgColor, textColor) {
+            const text = keywords.join(' + ');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = 600;
+            canvas.height = 400;
+
+            // Fill the background with the selected color
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Set text properties
+            ctx.fillStyle = textColor;
+            ctx.font = `${fontSize} ${font}`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+
+            // Draw the text
+            ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+            // Create image from canvas
+            currentImage = canvas.toDataURL();
+            const img = new Image();
+            img.src = currentImage;
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('result').appendChild(img);
+            document.getElementById('downloadImage').style.display = 'inline-block';
+        }
+
+        document.getElementById('downloadImage').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = currentImage;
+            link.download = 'generated-image.png';
+            link.click();
+        });
+    </script>
+</body>
+</html>
