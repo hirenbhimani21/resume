@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* .header,
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1,
+        .footer p {
+            margin: 0;
+        } */
+
+        .main-content {
+            min-height: calc(100vh - 160px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-floating input,
+        .form-floating select {
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            border: none;
+            padding: 12px 25px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #0056b3, #007bff);
+            transform: translateY(-3px);
+        }
+
+        .btn-download {
+            background: linear-gradient(45deg, #28a745, #218838);
+            border: none;
+            padding: 12px 25px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: linear-gradient(45deg, #218838, #28a745);
+            transform: translateY(-3px);
+        }
+
+        .preview-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        canvas {
+            border: 1px solid #ccc;
+            border-radius: 15px;
+        }
+
+        .header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 3px 1px;
+        }
+
+        #logo {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        #aboutBtn {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        #aboutBtn:hover {
+            text-decoration: underline;
+        }
+
+
+        /* Mobile and Tablet Responsiveness */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .btn-primary,
+            .btn-download {
+                padding: 10px 20px;
+            }
+        }
+
+        /* Medium and Large Screens */
+        @media (min-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1 id="logo">QR Code Generator</h1>
+        <button type="button" class="btn btn-link text-light" id="aboutBtn">About Us</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <form id="qrForm" class="mb-3">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" id="urlInput" class="form-control" placeholder="Enter URL or text"
+                                required>
+                            <label for="urlInput">Enter URL or Text</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" id="titleInput" class="form-control"
+                                placeholder="Enter title for QR code" maxlength="30">
+                            <label for="titleInput">Enter Title for QR Code (max 30 characters)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="color" id="backgroundColor" class="form-control" value="#ffffff">
+                            <label for="backgroundColor">Background Color</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="">
+                            <input type="range" id="sizeSlider" class="form-range" min="100" max="380" value="200">
+                            <label for="sizeSlider">QR Code Size</label>
+                            <span id="sizeValue" class="float-end">250px</span> <!-- Display the size value -->
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <select id="errorCorrection" class="form-select">
+                                <option value="L">Low (L)</option>
+                                <option value="M" selected>Medium (M)</option>
+                                <option value="Q">Quartile (Q)</option>
+                                <option value="H">High (H)</option>
+                            </select>
+                            <label for="errorCorrection">Error Correction Level</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Generate QR Code</button>
+                </div>
+            </form>
+
+            <div id="qrCode" class="preview-container"></div>
+
+            <div class="d-grid">
+                <button id="downloadBtn" class="btn btn-download" style="display: none;">Download QR Code</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <!-- About Us Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 90%; width: 800px;"> <!-- Wider Modal with specific max-width -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="aboutModalLabel">About Us</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="max-height: 500px; overflow-y: auto;"> <!-- Make modal body scrollable -->
+                <p>Welcome to our <strong>QR Code Generator</strong>—an essential tool for businesses, marketers,
+                    and individuals who want to easily create customized, high-quality QR codes. Whether you're
+                    looking to share a website, promote a product, or just make your business card more interactive,
+                    our generator is here to make it simple.</p>
+
+                <p>QR codes are versatile and have endless use cases:</p>
+
+                <ul>
+                    <li><strong>Business & Marketing:</strong> Use QR codes on brochures, posters, and
+                        advertisements to direct customers to your website, product pages, or social media profiles.
+                        QR codes are an excellent tool for campaigns, allowing you to track engagement and gather
+                        analytics.</li>
+                    <li><strong>Personal Use:</strong> Share contact information, personal websites, or event
+                        details with a simple scan. Perfect for invitations or networking cards, QR codes make
+                        sharing information quick and easy.</li>
+                </ul>
+
+                <p><strong>How long will QR codes remain active?</strong></p>
+                <p>The duration of the QR code's functionality depends on the link it directs to and the settings
+                    you choose when generating it. Static QR codes (those linked to a fixed URL or text) never
+                    expire, whereas dynamic QR codes (linked to editable content or tracking systems) can be updated
+                    or deactivated as needed.</p>
+
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>Display your restaurant's menu on a table using a QR code.</li>
+                    <li>Place a QR code on a business card to quickly share your LinkedIn profile or portfolio.</li>
+                    <li>Promote a new product with a QR code leading directly to your online store's product page.
+                    </li>
+                </ul>
+
+                <p>With our QR Code Generator, you can create a personalized, high-quality QR code in just a few
+                    clicks. Perfect for any occasion, business need, or marketing campaign.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- <div class="footer">
+        <p>&copy; 2024 QR Generator. All rights reserved.</p>
+    </div> -->
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+    <!-- QR Code Generator Script -->
+    <script>
+        document.getElementById('qrForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get input values
+            const urlInput = document.getElementById('urlInput').value;
+            const titleInput = document.getElementById('titleInput').value;
+            const backgroundColor = document.getElementById('backgroundColor').value;
+            const qrSize = document.getElementById('sizeSlider').value;
+            const errorCorrection = document.getElementById('errorCorrection').value;
+
+            // Clear previous QR code
+            const qrCodeDiv = document.getElementById('qrCode');
+            qrCodeDiv.innerHTML = '';
+
+            // Hide the logo during QR code generation
+            const logo = document.getElementById('logo');
+            // logo.style.display = 'none';
+
+            // Create canvas for QR Code
+            const canvas = document.createElement('canvas');
+            canvas.width = parseInt(qrSize) + 100; // Add padding for better visuals
+            canvas.height = parseInt(qrSize) + 150;
+            const ctx = canvas.getContext('2d');
+
+            // Add white background
+            ctx.fillStyle = backgroundColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Dynamically adjust font size based on QR code size
+            const fontSize = Math.max(24, Math.floor(qrSize / 12)); // Minimum font size of 24px
+            ctx.font = `${fontSize}px Arial`;
+            ctx.fillStyle = '#333';
+            ctx.textAlign = 'center';
+
+            // Title Wrapping Logic
+            const maxWidth = canvas.width - 40; // 20px padding on each side
+            const words = titleInput.split(' ');
+            let line = '';
+            const lines = [];
+
+            // Wrap text into multiple lines
+            for (let i = 0; i < words.length; i++) {
+                const testLine = line + words[i] + ' ';
+                const width = ctx.measureText(testLine).width;
+                if (width > maxWidth && i > 0) {
+                    lines.push(line);
+                    line = words[i] + ' ';
+                } else {
+                    line = testLine;
+                }
+            }
+
+            lines.push(line); // Add the last line
+            const lineHeight = fontSize * 1.2; // Adjust line height based on font size
+
+            // Draw wrapped text
+            let y = 40;
+            for (let i = 0; i < lines.length; i++) {
+                ctx.fillText(lines[i], canvas.width / 2, y);
+                y += lineHeight;
+            }
+
+            // Generate QR Code
+            QRCode.toCanvas(urlInput, {
+                width: parseInt(qrSize),
+                // color: {
+                //     dark: '#000000',    
+                //     light: backgroundColor
+                // },
+                errorCorrectionLevel: errorCorrection
+            }, function (error, qrCanvas) {
+                if (error) {
+                    console.error(error);
+                    alert('Failed to generate QR code.');
+                    return;
+                }
+
+                // Center QR Code
+                const qrX = (canvas.width - qrCanvas.width) / 2;
+                const qrY = (canvas.height - qrCanvas.height) / 2;
+                ctx.drawImage(qrCanvas, qrX, qrY);
+
+                // Display Canvas
+                qrCodeDiv.appendChild(canvas);
+
+                // Enable Download Button
+                const downloadBtn = document.getElementById('downloadBtn');
+                downloadBtn.style.display = 'block';
+
+                downloadBtn.onclick = function () {
+                    // Show logo before downloading
+                    logo.style.display = 'block';
+
+                    // Create the image with the logo for download
+                    const downloadCanvas = document.createElement('canvas');
+                    downloadCanvas.width = canvas.width;
+                    downloadCanvas.height = canvas.height;
+                    const downloadCtx = downloadCanvas.getContext('2d');
+                    downloadCtx.drawImage(canvas, 0, 0);
+
+                    // Add logo at the bottom-center of the downloaded image
+                    const footerFontSize = Math.max(12, Math.floor(qrSize / 25)); // Dynamically adjust footer font size
+                    downloadCtx.font = `${footerFontSize}px Arial`;
+                    downloadCtx.fillStyle = '#333';
+                    downloadCtx.textAlign = 'center';
+                    downloadCtx.fillText('QR Generator - by Hiren Bhimani 21', downloadCanvas.width / 2, downloadCanvas.height - 10); // Bottom-center positioning
+
+                    // Trigger the download
+                    const link = document.createElement('a');
+                    link.download = 'qr-code-card.png';
+                    link.href = downloadCanvas.toDataURL('image/png');
+                    link.click();
+
+                    // Hide logo again after download
+                    logo.style.display = 'none';
+                };
+
+            });
+        });
+
+        // Get the slider element and the size value display element
+        const sizeSlider = document.getElementById('sizeSlider');
+        const sizeValue = document.getElementById('sizeValue');
+
+        // Set the initial size value
+        sizeValue.textContent = sizeSlider.value + 'px';
+
+        // Add an event listener to update the size value dynamically as the slider is moved
+        sizeSlider.addEventListener('input', function () {
+            sizeValue.textContent = sizeSlider.value + 'px';
+        });
+
+
+        // Show About Us Modal
+        document.getElementById('aboutBtn').addEventListener('click', function () {
+            const aboutModal = new bootstrap.Modal(document.getElementById('aboutModal'));
+            aboutModal.show();
+        });
+
+// Get background color from user input
+const backgroundColor = document.getElementById('backgroundColor').value;
+
+// Set QR code foreground color to the same as the background color
+const qrCodeColor = backgroundColor;
+
+// Generate QR Code with same foreground and background color
+QRCode.toCanvas(urlInput, {
+    width: parseInt(qrSize),
+    color: {
+        dark: qrCodeColor,  // QR code color (foreground)
+        light: qrCodeColor  // Background color of QR code
+    },
+    errorCorrectionLevel: errorCorrection
+}, function (error, qrCanvas) {
+    if (error) {
+        console.error(error);
+        alert('Failed to generate QR code.');
+        return;
+    }
+
+    // Clear previous QR code
+    const qrCodeDiv = document.getElementById('qrCode');
+    qrCodeDiv.innerHTML = '';
+
+    // Center QR Code
+    const qrX = (canvas.width - qrCanvas.width) / 2;
+    const qrY = (canvas.height - qrCanvas.height) / 2;
+    ctx.drawImage(qrCanvas, qrX, qrY);
+
+    // Display Canvas
+    qrCodeDiv.appendChild(canvas);
+
+    // Enable Download Button
+    const downloadBtn = document.getElementById('downloadBtn');
+    downloadBtn.style.display = 'block';
+});
+
+        
+    </script>
+</body>
+
+</html>
